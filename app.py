@@ -13,7 +13,7 @@ connect_db(app)
 @app.route('/')
 def show_homepage():
     all_cupcakes = Cupcake.query.all()
-    render_template("home.html", cupcakes = all_cupcakes)
+    return render_template("home.html", cupcakes = all_cupcakes)
     
     
 @app.route('/api/cupcakes')
