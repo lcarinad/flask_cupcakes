@@ -29,6 +29,7 @@ CUPCAKE_DATA_2 = {
 }
 
 
+
 class CupcakeViewsTestCase(TestCase):
     """Tests for views of API."""
 
@@ -107,3 +108,21 @@ class CupcakeViewsTestCase(TestCase):
             })
 
             self.assertEqual(Cupcake.query.count(), 2)
+            
+    
+    def update_cupcake(self):
+        with app.test_client() as client:
+            resp = client.patch(f"/api/cupcakes/{self.cupcake.id}", json={"flavor":"ChocolateTest"})
+            self.assertEqual(resp.status_code, 200)
+            
+            resp = client.patch(f"/api/cupcakes/0", json={"flavor":"ChocolateTest2"})
+            self.assertEqual(resp.status_code, 404)
+            
+    def delete_cupcake(self):
+        with app.test_client() as client:
+                resp = client.delete(f"/api/cupcakes/{self.cupcake.id}")
+                self.assertEqual(resp.status_code, 200)
+                
+                data = resp.json
+                self.assertNotIn('cupcake', data)
+    
