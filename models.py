@@ -27,4 +27,5 @@ class Cupcake(db.Model):
         }
         
     def __repr__(self):
+        """Representation of cupcake instance"""
         return f"<Cupcake= {self.id}, Flavor={self.flavor}>"
