@@ -1,12 +1,14 @@
 {% extends "base.html" %} {% block title %}Cupcakes{% endblock %} {% block
 content%}
-
-<ul class="cupcakes"></ul>
+<div
+  class="container cupcakes"
+  id="cupcakeList">
+  <ul class="cupcakes"></ul>
+</div>
 <div class="container">
   <h1>Add a Cupcake</h1>
   <form
-    action="/api/cupcakes"
-    method="post"
+    action="/"
     id="cupcakeForm"
     class="form-control w-50">
     <div class="mb-3">
@@ -18,6 +20,7 @@ content%}
       <input
         type="text"
         name="flavor"
+        id="flavor"
         class="form-control" />
     </div>
 
@@ -30,6 +33,7 @@ content%}
       <input
         type="text"
         name="size"
+        id="size"
         class="form-control" />
     </div>
 
@@ -42,6 +46,7 @@ content%}
       <input
         type="number"
         name="rating"
+        id="rating"
         class="form-control" />
 
       <div class="mb-3">
@@ -53,6 +58,7 @@ content%}
         <input
           type="url"
           name="image"
+          id="image"
           class="form-control" />
       </div>
       <button
